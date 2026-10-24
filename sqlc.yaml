@@ -1,0 +1,11 @@
+# homepage
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "internal/home/query.sql"
+    schema: "migration"
+    gen:
+      go:
+        package: "home"
+        out: "internal/home"
+        sql_package: "pgx/v5"

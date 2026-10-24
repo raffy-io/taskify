@@ -1,0 +1,27 @@
+package home
+
+import "github.com/raffy-io/taskify/internal/shared"
+
+templ Home() {
+	@shared.Base() {
+		<section class="relative grid place-content-center h-dvh bg-gray-950">
+			<div class="relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center">
+				<h1 class="capitalize font-black text-4xl md:text-6xl lg:text-8xl">welcome</h1>
+				<p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem harum, expedita unde sapiente fugiat vero libero numquam illum quae distinctio officia facilis a, voluptates nobis cum, excepturi placeat rerum saepe.</p>
+				@shared.HeroButton("get started", "/test")
+			</div>
+		</section>
+	}
+}
+
+templ Test() {
+	@shared.Base() {
+		<section class="relative grid place-content-center h-dvh bg-gray-950">
+			<div class="relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center">
+				<h1 class="capitalize font-black lg:text-8xl">Test HTMX</h1>
+				<p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem harum, expedita unde sapiente fugiat vero libero numquam illum quae distinctio officia facilis a, voluptates nobis cum, excepturi placeat rerum saepe.</p>
+				@shared.HeroButton("go back home", "/")
+			</div>
+		</section>
+	}
+}

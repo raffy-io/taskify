@@ -1,0 +1,31 @@
+package shared
+
+//---Base Layout---//
+templ Base() {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="stylesheet" href="/static/css/output.css"/>
+			<script defer src="/static/js/htmx.min.js"></script>
+			<script defer src="/static/js/main.js"></script>
+			<script defer src="/static/js/alpine.min.js"></script>
+			<title>Document</title>
+		</head>
+		<body hx-boost="true">
+			<header></header>
+			<main>
+				{ children... }
+			</main>
+			<footer></footer>
+		</body>
+	</html>
+}
+
+//---Shared Components---//
+templ HeroButton(text string, href string) {
+	<a href={ href } class="capitalize px-3 py-1 bg-red-600 hover:bg-red-400 text-red-50">
+		{ text }
+	</a>
+}
