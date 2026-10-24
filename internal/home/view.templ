@@ -2,7 +2,7 @@ package home
 
 import "github.com/raffy-io/taskify/internal/shared"
 
-templ Home() {
+templ Index() {
 	@shared.Base() {
 		<section class="relative grid place-content-center h-dvh bg-gray-950">
 			<div class="relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center">
@@ -12,6 +12,59 @@ templ Home() {
 			</div>
 		</section>
 	}
+}
+
+templ Edit(form Form) {
+	@shared.Base() {
+		<section class="max-w-xl mx-auto p-6">
+			<h1 class="text-2xl font-bold mb-6">Edit Hero Section</h1>
+			@EditForm(form)
+			<div id="edit-result" class="mt-4"></div>
+		</section>
+	}
+}
+
+templ EditForm(form Form) {
+	<form
+		hx-post="/update"
+		hx-encoding="multipart/form-data"
+		hx-swap="outerHTML"
+		class="space-y-4"
+	>
+		<div>
+			<label class="block text-sm font-medium mb-1" for="hero_image">Hero Image</label>
+			<input type="file" name="hero_image" id="hero_image" class="w-full bg-gray-200 p-2"/>
+			if form.Errors["hero_image"] != "" {
+				<p class="text-xs text-red-500">{ form.Errors["hero_image"] }</p>
+			}
+		</div>
+		<div>
+			<label class="block text-sm font-medium mb-1" for="hero_image_alt">Image Alt (for SEO purposes)</label>
+			<input type="text" name="hero_image_alt" id="hero_image_alt" value={ form.HeroImageAlt } class="w-full border rounded p-2"/>
+			if form.Errors["hero_image_alt"] != "" {
+				<p class="text-xs text-red-500">{ form.Errors["hero_image_alt"] }</p>
+			}
+		</div>
+		<div>
+			<label class="block text-sm font-medium mb-1" for="hero_title">Hero Title</label>
+			<input type="text" name="hero_title" id="hero_title" value={ form.HeroTitle } class="w-full border rounded p-2"/>
+			if form.Errors["hero_title"] != "" {
+				<p class="text-xs text-red-500">{ form.Errors["hero_title"] }</p>
+			}
+		</div>
+		<div>
+			<label class="block text-sm font-medium mb-1" for="hero_text">Hero Text</label>
+			<textarea name="hero_text" id="hero_text" rows="3" class="w-full border rounded p-2">{ form.HeroText }</textarea>
+			if form.Errors["hero_text"] != "" {
+				<p class="text-xs text-red-500">{ form.Errors["hero_text"] }</p>
+			}
+		</div>
+		<div>
+			<button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded font-medium hover:bg-indigo-700">
+				Save Changes
+			</button>
+		</div>
+	</form>
 }
 
 templ Test() {

@@ -10,19 +10,31 @@ import (
 )
 
 const upsertHomepage = `-- name: UpsertHomepage :exec
-INSERT INTO homepage (id, image)
-VALUES ($1, $2)
+INSERT INTO homepage (id, hero_image, hero_image_alt, hero_title, hero_text)
+VALUES ($1, $2, $3, $4, $5)
 ON CONFLICT (id) 
 DO UPDATE SET 
-    image = EXCLUDED.image
+    hero_image = EXCLUDED.hero_image,
+    hero_image_alt = EXCLUDED.hero_image_alt,
+    hero_title = EXCLUDED.hero_title,
+    hero_text = EXCLUDED.hero_text
 `
 
 type UpsertHomepageParams struct {
-	ID    int64
-	Image string
+	ID           int64
+	HeroImage    string
+	HeroImageAlt string
+	HeroTitle    string
+	HeroText     string
 }
 
 func (q *Queries) UpsertHomepage(ctx context.Context, arg UpsertHomepageParams) error {
-	_, err := q.db.Exec(ctx, upsertHomepage, arg.ID, arg.Image)
+	_, err := q.db.Exec(ctx, upsertHomepage,
+		arg.ID,
+		arg.HeroImage,
+		arg.HeroImageAlt,
+		arg.HeroTitle,
+		arg.HeroText,
+	)
 	return err
 }

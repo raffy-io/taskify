@@ -5,6 +5,9 @@
 package home
 
 type Homepage struct {
-	ID    int64
-	Image string
+	ID           int64
+	HeroImage    string
+	HeroImageAlt string
+	HeroTitle    string
+	HeroText     string
 }

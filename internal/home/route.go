@@ -11,12 +11,17 @@ func HomepageRoutes(queries *Queries) http.Handler {
 
 	h := &Handler{
 		Queries: queries,
-		
 	}
 
+	// Homepage
+	r.Get("/", h.Index)
 
-	r.Get("/",h.HandleIndex)
-	r.Get("/test",h.HandleTest)
+	// Homepage management
+	r.Get("/edit", h.Edit)
+	r.Post("/update", h.Update)
+
+	// Dummy Route
+	r.Get("/test", h.Test)
 
 	return r
 

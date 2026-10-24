@@ -20,8 +20,8 @@ func main() {
 	_ = godotenv.Load()
 
 	//---Create Connection---//
-	pool,err := pgxpool.New(ctx,os.Getenv("DB_URL"))
-	if err !=nil {
+	pool, err := pgxpool.New(ctx, os.Getenv("DB_URL"))
+	if err != nil {
 		slog.Error("Failed to create connection pool", "error", err)
 		os.Exit(1)
 	}
@@ -44,7 +44,7 @@ func main() {
 	//----Routes----//
 
 	// homepage
-	r.Mount("/",home.HomepageRoutes(homeQueries))
+	r.Mount("/", home.HomepageRoutes(homeQueries))
 
 	// -----server----- //
 	port := os.Getenv("PORT")
