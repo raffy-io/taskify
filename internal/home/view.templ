@@ -7,7 +7,7 @@ templ Index() {
 		<section class="relative grid place-content-center h-dvh bg-gray-950">
 			<div class="relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center">
 				<h1 class="capitalize font-black text-4xl md:text-6xl lg:text-8xl">welcome</h1>
-				<p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem harum, expedita unde sapiente fugiat vero libero numquam illum quae distinctio officia facilis a, voluptates nobis cum, excepturi placeat rerum saepe.</p>
+				<p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
 				@shared.HeroButton("get started", "/test")
 			</div>
 		</section>
@@ -18,7 +18,9 @@ templ Edit(form Form) {
 	@shared.Base() {
 		<section class="max-w-xl mx-auto p-6">
 			<h1 class="text-2xl font-bold mb-6">Edit Hero Section</h1>
-			@EditForm(form)
+			<div id="form-wrapper">
+				@EditForm(form)
+			</div>
 			<div id="edit-result" class="mt-4"></div>
 		</section>
 	}
@@ -28,7 +30,8 @@ templ EditForm(form Form) {
 	<form
 		hx-post="/update"
 		hx-encoding="multipart/form-data"
-		hx-swap="outerHTML"
+		hx-swap="innerHTML"
+		hx-target="#form-wrapper"
 		class="space-y-4"
 	>
 		<div>
@@ -72,7 +75,7 @@ templ Test() {
 		<section class="relative grid place-content-center h-dvh bg-gray-950">
 			<div class="relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center">
 				<h1 class="capitalize font-black lg:text-8xl">Test HTMX</h1>
-				<p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem harum, expedita unde sapiente fugiat vero libero numquam illum quae distinctio officia facilis a, voluptates nobis cum, excepturi placeat rerum saepe.</p>
+				<p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
 				@shared.HeroButton("go back home", "/")
 			</div>
 		</section>

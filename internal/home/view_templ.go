@@ -43,7 +43,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"relative grid place-content-center h-dvh bg-gray-950\"><div class=\"relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center\"><h1 class=\"capitalize font-black text-4xl md:text-6xl lg:text-8xl\">welcome</h1><p class=\"mb-4\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem harum, expedita unde sapiente fugiat vero libero numquam illum quae distinctio officia facilis a, voluptates nobis cum, excepturi placeat rerum saepe.</p>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"relative grid place-content-center h-dvh bg-gray-950\"><div class=\"relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center\"><h1 class=\"capitalize font-black text-4xl md:text-6xl lg:text-8xl\">welcome</h1><p class=\"mb-4\">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -98,7 +98,7 @@ func Edit(form Form) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<section class=\"max-w-xl mx-auto p-6\"><h1 class=\"text-2xl font-bold mb-6\">Edit Hero Section</h1>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<section class=\"max-w-xl mx-auto p-6\"><h1 class=\"text-2xl font-bold mb-6\">Edit Hero Section</h1><div id=\"form-wrapper\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -106,7 +106,7 @@ func Edit(form Form) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div id=\"edit-result\" class=\"mt-4\"></div></section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div><div id=\"edit-result\" class=\"mt-4\"></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -141,7 +141,7 @@ func EditForm(form Form) templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<form hx-post=\"/update\" hx-encoding=\"multipart/form-data\" hx-swap=\"outerHTML\" class=\"space-y-4\"><div><label class=\"block text-sm font-medium mb-1\" for=\"hero_image\">Hero Image</label> <input type=\"file\" name=\"hero_image\" id=\"hero_image\" class=\"w-full bg-gray-200 p-2\"> ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<form hx-post=\"/update\" hx-encoding=\"multipart/form-data\" hx-swap=\"innerHTML\" hx-target=\"#form-wrapper\" class=\"space-y-4\"><div><label class=\"block text-sm font-medium mb-1\" for=\"hero_image\">Hero Image</label> <input type=\"file\" name=\"hero_image\" id=\"hero_image\" class=\"w-full bg-gray-200 p-2\"> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -153,7 +153,7 @@ func EditForm(form Form) templ.Component {
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(form.Errors["hero_image"])
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 38, Col: 63}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 41, Col: 63}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -171,7 +171,7 @@ func EditForm(form Form) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.ResolveAttributeValue(form.HeroImageAlt)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 43, Col: 89}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 46, Col: 89}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var7)
 		if templ_7745c5c3_Err != nil {
@@ -189,7 +189,7 @@ func EditForm(form Form) templ.Component {
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(form.Errors["hero_image_alt"])
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 45, Col: 67}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 48, Col: 67}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
@@ -207,7 +207,7 @@ func EditForm(form Form) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.ResolveAttributeValue(form.HeroTitle)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 50, Col: 78}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 53, Col: 78}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var9)
 		if templ_7745c5c3_Err != nil {
@@ -225,7 +225,7 @@ func EditForm(form Form) templ.Component {
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(form.Errors["hero_title"])
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 52, Col: 63}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 55, Col: 63}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
@@ -243,7 +243,7 @@ func EditForm(form Form) templ.Component {
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(form.HeroText)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 57, Col: 103}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 60, Col: 103}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -261,7 +261,7 @@ func EditForm(form Form) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(form.Errors["hero_text"])
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 59, Col: 62}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/home/view.templ`, Line: 62, Col: 62}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -313,7 +313,7 @@ func Test() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<section class=\"relative grid place-content-center h-dvh bg-gray-950\"><div class=\"relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center\"><h1 class=\"capitalize font-black lg:text-8xl\">Test HTMX</h1><p class=\"mb-4\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem harum, expedita unde sapiente fugiat vero libero numquam illum quae distinctio officia facilis a, voluptates nobis cum, excepturi placeat rerum saepe.</p>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "<section class=\"relative grid place-content-center h-dvh bg-gray-950\"><div class=\"relative z-2 lg:w-1/2 mx-auto text-gray-50 text-center\"><h1 class=\"capitalize font-black lg:text-8xl\">Test HTMX</h1><p class=\"mb-4\">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
